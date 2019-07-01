@@ -20,6 +20,7 @@ def get_image_urls():
     resp = urllib2.urlopen(free_pic_url)
     contents = resp.read()
     resp.close()
+    return images_from_html(contents)
 
     
 for i in get_image_urls():
