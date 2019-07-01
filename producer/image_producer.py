@@ -21,10 +21,6 @@ def get_image_urls():
     contents = resp.read()
     resp.close()
 
-
-f = open("/tmp/foo.html")
-images = images_from_html(f.read())
-f.close()
-
-for i in images:
+    
+for i in get_image_urls():
     print i
