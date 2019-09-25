@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+
+    % if next_date:
+    <a href="/images?obj={{obj}}&date={{next_date}}">next</a>
+    % end
+
+    <table>
+      % for row in rows:
+      <tr>
+        % for img in row:
+        <td><img src="{{img['url']}}" width="300"></td>
+        % end
+      </tr>
+      % end
+    </table>
+    
+  </body>
+</html>

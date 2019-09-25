@@ -1,0 +1,49 @@
+% import urllib
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Queue images</h2>
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only" for="enqueue"># of images</label>
+          <input type="text" name="enqueue" id="enqueue" class="form-control" placeholder="# of images" />
+        </div>
+        <button type="submit" class="btn btn-primary">submit</button>
+      </form>
+      
+      <h2>Queue Depth</h2>
+      
+      <ul>
+        % if num_queued > 0:
+        <li>Messages just queued: {{num_queued}}</li>
+        % end
+        <li>Queue depth: {{queue_depth}}</li>
+      </ul>
+      
+      <h2>Objects</h2>
+      
+      % if len(obj_counts) == 0:
+      There are no objects in the db
+      % else:
+      <table class="table table-striped">
+        <tr>
+          <th>object</th>
+          <th># images</th>
+        </tr>
+        % for oc in obj_counts:
+        %   obj = urllib.quote_plus(oc["object"])
+        <tr>
+          <td><a href="images?obj={{obj}}">{{oc["object"]}}</a></td>
+          <td>{{oc["count"]}}</td>
+        </tr>
+        % end
+      </table>
+      % end
+
+    </div>
+    
+  </body>
+</html>
